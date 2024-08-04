@@ -1,0 +1,12 @@
+function filter_widget_categories($args) {
+    // Hide categories for the first specific page
+    if (!is_page('specific-page-slug-1') && !is_category(array('category-IDs-for-first-page'))) {
+        $args['exclude'] = 'IDs-to-hide-for-first-page';
+    }
+    // Hide categories for the second specific page
+    elseif (!is_page('specific-page-slug-2') && !is_category(array('category-IDs-for-second-page'))) {
+        $args['exclude'] = 'IDs-to-hide-for-second-page';
+    }
+    return $args;
+}
+add_filter('widget_categories_args', 'filter_widget_categories');
